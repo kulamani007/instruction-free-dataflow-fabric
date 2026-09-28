@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use or build on this work, please cite it as below."
+title: "Instruction-Free Dataflow Fabric: Deterministic Multi-Model Inference on a Configurable Spatial Dataflow Fabric for Real-Time Edge Systems"
+authors:
+  - family-names: Rout
+    given-names: Kulamani
+date-released: 2026-09-28
+repository-code: "https://github.com/kulamani007/instruction-free-dataflow-fabric"
+type: software
+license: CC-BY-4.0
