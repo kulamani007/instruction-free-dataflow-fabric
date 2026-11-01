@@ -2,7 +2,7 @@
 
 **Deterministic, instruction-free multi-model inference on a configurable spatial dataflow fabric for real-time edge systems**
 
-Author: **Kulamani Rout** (B.Tech EEE, IIIT Bhubaneswar) · [github.com/kulamani007](https://github.com/kulamani007)
+Author: **Kulamani Rout** · [github.com/kulamani007](https://github.com/kulamani007)
 
 ## Core idea
 
