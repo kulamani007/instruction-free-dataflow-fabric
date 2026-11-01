@@ -15,7 +15,10 @@
 - **Not FP4 only.** FP4 is *less* precise than INT8 (measured below); FP4-only would cost
   accuracy and comparability with no benefit at edge scale that the 4-bit mode does not
   already give.
-- **NVFP4 and other NVIDIA-specific formats are ruled out** and will not be considered.
+- **NVFP4 and other NVIDIA-proprietary formats are ruled out** and will not be considered.
+  Open standards stay eligible even when NVIDIA is one of their co-developers.
+- **4-bit candidates: MXFP4 (OCP open standard) and INT4 with block scales.** Both are kept
+  as options (decided 1 November 2026); the choice between them is made by experiment.
 
 ## Why INT8 beats FP4 on precision
 
@@ -51,12 +54,11 @@ multiplier", the practical form of the idea in
 
 ## Open points for discussion
 
-1. **Which 4-bit format: INT4 with block scales, or MXFP4?** They measured about equal here.
-   Note on the NVIDIA rule: MX (including MXFP4) is an open standard published through the
-   Open Compute Project and developed jointly by Microsoft, AMD, Intel, Meta, NVIDIA and
-   Qualcomm. It is not NVIDIA-proprietary the way NVFP4 is. If the rule is meant to exclude
-   anything NVIDIA co-developed, MX goes too and the 4-bit mode would be INT4 with block
-   scales, which loses nothing measurable here.
+1. **Which 4-bit format: INT4 with block scales, or MXFP4?** They measured about equal here;
+   decide on accuracy and hardware cost in a real-model experiment. MX (including MXFP4) is
+   an open standard published through the Open Compute Project and developed jointly by
+   Microsoft, AMD, Intel, Meta, NVIDIA and Qualcomm, so it is allowed under the rule above
+   (only NVIDIA-proprietary formats such as NVFP4 are excluded).
 2. Which layers may drop to 4-bit, and who decides: a sensitivity test per layer in the
    compiler, or quantisation-aware training per model?
 3. Block size (16 / 32 / 64 values per scale) versus the window unit's fetch width.

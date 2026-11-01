@@ -42,7 +42,7 @@ for new models.
 | 1 Nov 2026 | [Composability experiment (time-shared NPU inflates small models' worst case up to 249×) and skeleton fit map of 11 CNNs](notes/2026-11-01_composability-and-fit-map-results.md) |
 | 1 Nov 2026 | [Lookup tables instead of multipliers: assessed (INT8 no; ≤ 4-bit and neuron-as-table yes)](notes/2026-11-01_lut-multiplication-idea.md) |
 | 1 Nov 2026 | [Tiny skeleton v0: three custom CNNs resident at once, first FPGA prototype target](notes/2026-11-01_tiny-skeleton-v0.md) |
-| 1 Nov 2026 | [Precision plan: INT8 default, optional 4-bit per layer; NVFP4 ruled out; 4-bit format open](notes/2026-11-01_precision-plan.md) |
+| 1 Nov 2026 | [Precision plan: INT8 default, optional 4-bit per layer (MXFP4 or block INT4); NVFP4 ruled out](notes/2026-11-01_precision-plan.md) |
 
 ## Running the models
 
