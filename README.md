@@ -21,6 +21,7 @@ for new models.
 | [`model/window_bank_model.py`](model/window_bank_model.py) | Python functional model: stride-driven address generator, bank-partitioned single-cycle window fetch, FULL vs SHIFT fetch modes, SRAM-read counts on MobileNetV1 |
 | [`model/composability_model.py`](model/composability_model.py) | Event-driven model: latency of co-running models on a time-shared NPU vs a statically partitioned fabric |
 | [`model/fit_map.py`](model/fit_map.py) | Skeleton fit map: which CNNs a fixed skeleton can become (circuit / folded / streamed), and at what cost |
+| [`model/tiny_skeleton.py`](model/tiny_skeleton.py) | Tiny skeleton v0: three custom 5–8-layer CNNs resident at once, sized against the ZU19EG FPGA |
 | [`model/workloads/`](model/workloads/) | Exact layer tables of 11 reference CNNs, with the extraction script |
 | [`figures/`](figures/) | Figures produced by the models |
 | [`notes/`](notes/) | Dated design notes and results; start with [core message and claims](notes/2026-11-01_core-message-and-claims.md) |
@@ -38,6 +39,8 @@ for new models.
 | 30 Sep 2026 | [External memory tier with double buffering; polyphase (space-to-depth) instead of im2col for strided layers](notes/2026-09-30_external-memory-and-polyphase.md) |
 | 1 Nov 2026 | [Core message: a CNN skeleton that becomes any model in its range, as a circuit; testable claims C1–C4](notes/2026-11-01_core-message-and-claims.md) |
 | 1 Nov 2026 | [Composability experiment (time-shared NPU inflates small models' worst case up to 249×) and skeleton fit map of 11 CNNs](notes/2026-11-01_composability-and-fit-map-results.md) |
+| 1 Nov 2026 | [Lookup tables instead of multipliers: assessed (INT8 no; ≤ 4-bit and neuron-as-table yes)](notes/2026-11-01_lut-multiplication-idea.md) |
+| 1 Nov 2026 | [Tiny skeleton v0: three custom CNNs resident at once, first FPGA prototype target](notes/2026-11-01_tiny-skeleton-v0.md) |
 
 ## Running the models
 
@@ -46,6 +49,7 @@ pip install numpy matplotlib
 python model/window_bank_model.py
 python model/composability_model.py && python model/plot_composability.py
 python model/fit_map.py && python model/plot_fit_map.py
+python model/tiny_skeleton.py
 ```
 
 Re-extracting the layer tables in `model/workloads/` also needs `torch`, `torchvision` and `ultralytics`.
