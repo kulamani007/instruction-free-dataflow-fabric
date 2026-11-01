@@ -25,6 +25,8 @@ for new models.
 | [`model/precision_compare.py`](model/precision_compare.py) | Rounding error of INT8, INT4, FP4 and MXFP4 on weight-like data |
 | [`model/workloads/`](model/workloads/) | Exact layer tables of 11 reference CNNs, with the extraction script |
 | [`figures/`](figures/) | Figures produced by the models |
+| [`RUNBOOK.md`](RUNBOOK.md) | Every run and test, dated, with exact commands and results; setup and regression check |
+| [`tools/`](tools/) | `check_all.sh` regression check; one-off proposal PDF patch script |
 | [`notes/`](notes/) | Dated design notes and results; start with [core message and claims](notes/2026-11-01_core-message-and-claims.md) |
 
 ## Idea log
@@ -45,6 +47,8 @@ for new models.
 | 1 Nov 2026 | [Precision plan: INT8 default, optional 4-bit per layer (MXFP4 or block INT4); NVFP4 ruled out](notes/2026-11-01_precision-plan.md) |
 
 ## Running the models
+
+Full setup, dated run history and the regression check are in [`RUNBOOK.md`](RUNBOOK.md). Quick start:
 
 ```bash
 pip install numpy matplotlib
