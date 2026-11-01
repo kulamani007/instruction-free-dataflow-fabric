@@ -22,6 +22,7 @@ for new models.
 | [`model/composability_model.py`](model/composability_model.py) | Event-driven model: latency of co-running models on a time-shared NPU vs a statically partitioned fabric |
 | [`model/fit_map.py`](model/fit_map.py) | Skeleton fit map: which CNNs a fixed skeleton can become (circuit / folded / streamed), and at what cost |
 | [`model/tiny_skeleton.py`](model/tiny_skeleton.py) | Tiny skeleton v0: three custom 5–8-layer CNNs resident at once, sized against the ZU19EG FPGA |
+| [`model/precision_compare.py`](model/precision_compare.py) | Rounding error of INT8, INT4, FP4 and MXFP4 on weight-like data |
 | [`model/workloads/`](model/workloads/) | Exact layer tables of 11 reference CNNs, with the extraction script |
 | [`figures/`](figures/) | Figures produced by the models |
 | [`notes/`](notes/) | Dated design notes and results; start with [core message and claims](notes/2026-11-01_core-message-and-claims.md) |
@@ -41,6 +42,7 @@ for new models.
 | 1 Nov 2026 | [Composability experiment (time-shared NPU inflates small models' worst case up to 249×) and skeleton fit map of 11 CNNs](notes/2026-11-01_composability-and-fit-map-results.md) |
 | 1 Nov 2026 | [Lookup tables instead of multipliers: assessed (INT8 no; ≤ 4-bit and neuron-as-table yes)](notes/2026-11-01_lut-multiplication-idea.md) |
 | 1 Nov 2026 | [Tiny skeleton v0: three custom CNNs resident at once, first FPGA prototype target](notes/2026-11-01_tiny-skeleton-v0.md) |
+| 1 Nov 2026 | [Precision plan: INT8 default, optional 4-bit per layer; NVFP4 ruled out; 4-bit format open](notes/2026-11-01_precision-plan.md) |
 
 ## Running the models
 
@@ -50,6 +52,7 @@ python model/window_bank_model.py
 python model/composability_model.py && python model/plot_composability.py
 python model/fit_map.py && python model/plot_fit_map.py
 python model/tiny_skeleton.py
+python model/precision_compare.py
 ```
 
 Re-extracting the layer tables in `model/workloads/` also needs `torch`, `torchvision` and `ultralytics`.
