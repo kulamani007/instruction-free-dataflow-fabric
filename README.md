@@ -19,7 +19,11 @@ for new models.
 |---|---|
 | [`proposal/`](proposal/) | Research proposal (PDF + Markdown source) |
 | [`model/window_bank_model.py`](model/window_bank_model.py) | Python functional model: stride-driven address generator, bank-partitioned single-cycle window fetch, FULL vs SHIFT fetch modes, SRAM-read counts on MobileNetV1 |
-| [`notes/`](notes/) | Dated design notes for ideas under development |
+| [`model/composability_model.py`](model/composability_model.py) | Event-driven model: latency of co-running models on a time-shared NPU vs a statically partitioned fabric |
+| [`model/fit_map.py`](model/fit_map.py) | Skeleton fit map: which CNNs a fixed skeleton can become (circuit / folded / streamed), and at what cost |
+| [`model/workloads/`](model/workloads/) | Exact layer tables of 11 reference CNNs, with the extraction script |
+| [`figures/`](figures/) | Figures produced by the models |
+| [`notes/`](notes/) | Dated design notes and results; start with [core message and claims](notes/2026-11-01_core-message-and-claims.md) |
 
 ## Idea log
 
@@ -30,13 +34,21 @@ for new models.
 | 22 Sep 2026 | Window-extraction unit: cyclic 2-D RAM banking for single-cycle M×N window fetch; multi-hot bank-enable mask for clock gating |
 | 23 Sep 2026 | Stride-driven window address generator; FULL vs SHIFT fetch modes; functional model and MobileNetV1 read analysis (57% fewer window-fetch SRAM reads) |
 | 24 Sep 2026 | [Heterogeneous convolution engines per stage with multi-model co-scheduling and provable non-interference](notes/2026-09-24_heterogeneous-stage-engines.md) |
+| 29 Sep 2026 | Validation method: FPGA as cycle-accurate emulation, ASIC flow for area/timing/energy, MPW test chip as stretch goal |
+| 30 Sep 2026 | [External memory tier with double buffering; polyphase (space-to-depth) instead of im2col for strided layers](notes/2026-09-30_external-memory-and-polyphase.md) |
+| 1 Nov 2026 | [Core message: a CNN skeleton that becomes any model in its range, as a circuit; testable claims C1–C4](notes/2026-11-01_core-message-and-claims.md) |
+| 1 Nov 2026 | [Composability experiment (time-shared NPU inflates small models' worst case up to 249×) and skeleton fit map of 11 CNNs](notes/2026-11-01_composability-and-fit-map-results.md) |
 
-## Running the model
+## Running the models
 
 ```bash
-pip install numpy
+pip install numpy matplotlib
 python model/window_bank_model.py
+python model/composability_model.py && python model/plot_composability.py
+python model/fit_map.py && python model/plot_fit_map.py
 ```
+
+Re-extracting the layer tables in `model/workloads/` also needs `torch`, `torchvision` and `ultralytics`.
 
 ## Citing this work
 
