@@ -1,5 +1,7 @@
 # Instruction-Free Dataflow Fabric
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23884182.svg)](https://doi.org/10.5281/zenodo.23884182)
+
 **Deterministic, instruction-free multi-model inference on a configurable spatial dataflow fabric for real-time edge systems**
 
 Author: **Kulamani Rout** · [github.com/kulamani007](https://github.com/kulamani007)
@@ -63,7 +65,11 @@ Re-extracting the layer tables in `model/workloads/` also needs `torch`, `torchv
 
 ## Citing this work
 
-If you use or build on these ideas, please cite this repository (see `CITATION.cff`) and contact the author.
+If you use or build on these ideas, please cite this work and contact the author:
+
+> Kulamani Rout, *Instruction-Free Dataflow Fabric: Deterministic Multi-Model Inference on a Configurable Spatial Dataflow Fabric for Real-Time Edge Systems*, Zenodo, 2026. [doi:10.5281/zenodo.23884182](https://doi.org/10.5281/zenodo.23884182)
+
+This DOI always resolves to the latest version (v0.1: [10.5281/zenodo.23884183](https://doi.org/10.5281/zenodo.23884183)). See also `CITATION.cff`.
 
 ## License
 

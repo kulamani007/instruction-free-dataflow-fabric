@@ -252,3 +252,24 @@ From the notes, in rough priority. Move each one into the run log when it is don
   ```
   Result: <key numbers>. Problems and fixes: <...>. Commit `<hash>`.
 ````
+
+### 2026-11-02 · Mac · Zenodo DOI (release v0.1)
+
+- **R1 Zenodo metadata.** Added `.zenodo.json` (title, creator "Rout, Kulamani", CC BY 4.0,
+  keywords) and updated `CITATION.cff` (v0.1); validated with `cffconvert --validate`.
+  Commit `0d3ae9e`.
+- **R2 Zenodo ↔ GitHub** (done by Kulamani on zenodo.org): log in with GitHub, enable the
+  repository under Profile → GitHub.
+- **R3 Release.**
+  ```bash
+  git push origin main
+  ```
+  ```bash
+  gh release create v0.1 --target main --title "v0.1: early research record" --notes "<release notes>"
+  ```
+  Published 2026-11-02 11:55 UTC. Zenodo archived it within minutes (checked with the public
+  API, `https://zenodo.org/api/records?q=...`): version DOI **10.5281/zenodo.23884183**,
+  concept DOI (all versions, the one to cite) **10.5281/zenodo.23884182**. Metadata verified:
+  title, creator, CC BY 4.0, v0.1, 2026-11-02.
+- **R4 DOI added** to the README (badge + citation) and `CITATION.cff` (`doi:` field).
+  Future releases (`v0.2`, …) get new version DOIs under the same concept DOI automatically.

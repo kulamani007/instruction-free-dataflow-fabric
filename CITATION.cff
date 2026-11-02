@@ -5,6 +5,7 @@ authors:
   - family-names: Rout
     given-names: Kulamani
 version: v0.1
+doi: 10.5281/zenodo.23884182
 date-released: 2026-11-02
 repository-code: "https://github.com/kulamani007/instruction-free-dataflow-fabric"
 type: software
