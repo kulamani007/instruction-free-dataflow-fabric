@@ -34,7 +34,11 @@ about one bit):
 | INT4, one scale per 32 values | 20.2 | 18.3 | 18.9 |
 | MXFP4 (OCP), one power-of-two scale per 32 values | 18.8 | 17.9 | 18.4 |
 
-INT8 is about 19–21 dB (≈ 3 bits) more precise than any 4-bit option. FP4 beats INT4 only
+INT8 is more precise than every 4-bit option in every case: by 17–20 dB (about 3 bits) on
+Gaussian and Laplacian data, but only by about 7 dB when rare outliers stretch INT8's single
+per-tensor scale (per-channel INT8 scales would recover most of that; not yet measured).
+*Corrected 2 Nov 2026: this sentence first said "about 19–21 dB more precise than any 4-bit
+option", which holds only for the Gaussian case.* FP4 beats INT4 only
 with a single scale per tensor, because its uneven spacing handles large values better.
 With a scale per block of 32 values, INT4 and MXFP4 are about equal. FP4 is popular for
 large language models because it halves memory traffic where weight bandwidth dominates,
