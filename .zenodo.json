@@ -1,0 +1,20 @@
+{
+  "title": "Instruction-Free Dataflow Fabric: Deterministic Multi-Model Inference on a Configurable Spatial Dataflow Fabric for Real-Time Edge Systems",
+  "upload_type": "software",
+  "creators": [
+    {"name": "Rout, Kulamani"}
+  ],
+  "description": "<p>Research record for a fixed hardware skeleton that any CNN within its range can be configured to become, running as a circuit with no instruction processor in the inference loop. A compiler turns each model into configuration, routing, memory and a static schedule, so worst-case latency is known before inference, even when several models share the chip.</p><p>Contents: research proposal; Python models of the window-extraction unit (banked single-cycle window fetch, FULL vs SHIFT fetch modes), multi-model composability (time-shared NPU vs statically partitioned fabric), a skeleton fit map of 11 reference CNNs, a three-model tiny skeleton sized for a ZU19EG FPGA, and an INT8 / FP4 precision comparison; dated design notes and a runbook of every run.</p>",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "dataflow accelerator",
+    "spatial computing",
+    "edge AI",
+    "CNN accelerator",
+    "real-time systems",
+    "deterministic latency",
+    "multi-DNN",
+    "hardware-software co-design"
+  ],
+  "version": "v0.1"
+}

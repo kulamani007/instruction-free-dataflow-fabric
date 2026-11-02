@@ -4,7 +4,20 @@ title: "Instruction-Free Dataflow Fabric: Deterministic Multi-Model Inference on
 authors:
   - family-names: Rout
     given-names: Kulamani
-date-released: 2026-09-28
+version: v0.1
+date-released: 2026-11-02
 repository-code: "https://github.com/kulamani007/instruction-free-dataflow-fabric"
 type: software
 license: CC-BY-4.0
+keywords:
+  - dataflow accelerator
+  - spatial computing
+  - edge AI
+  - real-time systems
+  - deterministic latency
+abstract: >-
+  A fixed hardware skeleton that any CNN within its range can be configured to
+  become, running as a circuit with no instruction processor in the inference
+  loop; a compiler produces configuration, routing, memory and a static
+  schedule, so worst-case latency is known in advance even when several models
+  share the chip.
