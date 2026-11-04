@@ -1,6 +1,6 @@
 # Core message and research claims
 
-**Author:** Kulamani Rout · **First recorded:** 1 November 2026 · **Status:** agreed direction for pitching; the proposal text has not been updated to match yet
+**Author:** Kulamani Rout · **First recorded:** 1 November 2026 · **Status:** current research direction
 
 ## The idea, in the author's own words
 
@@ -25,8 +25,7 @@ than a slogan:
 1. **No instruction overhead:** nothing is fetched or decoded during inference.
 2. **Timing is known in advance:** a circuit does not make runtime decisions.
 3. **Several models can occupy different parts of the skeleton without disturbing each
-   other** (composability). See the experiment in
-   [2026-11-01_composability-and-fit-map-results.md](2026-11-01_composability-and-fit-map-results.md).
+   other** (composability). See the results summary in the [README](../README.md#results-at-a-glance).
 
 ## Questions to be ready for
 
@@ -77,13 +76,6 @@ hardware and compiler themselves.**
 
 "Removing dispatch saves control energy" is kept as a secondary result, not a headline:
 Groq and modern NPUs already keep dispatch overhead low.
-
-## Who to approach
-
-Labs at the intersection of computer architecture and real-time systems, for example the
-Biondi group (Scuola Sant'Anna, Pisa), Kees Goossens (TU Eindhoven, composable SoCs),
-Hyoseung Kim (UC Riverside, DART), Sophia Shao (UC Berkeley, Gemmini, MoCA). Venues:
-RTSS / RTAS / EMSOFT and DAC / ISCA / MICRO.
 
 ## Sources consulted
 
