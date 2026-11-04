@@ -37,7 +37,8 @@ def net(spec):
         elif kind == "pw":   macs, wts = ho*wo*ci*co, ci*co
         else:                macs, wts = ci*co + h*w*ci, ci*co      # gap+fc
         line = k * w * ci if kind in ("conv", "dw") else (w * ci if kind == "pw" else ci)
-        out.append(dict(name=name, kind=kind, k=k, macs=macs, w=wts, line=line))
+        out.append(dict(name=name, kind=kind, k=k, macs=macs, w=wts, line=line,
+                        s=s, h=h, wd=w, ci=ci, co=co))      # shape kept for the golden model
     return out
 
 MODELS = {

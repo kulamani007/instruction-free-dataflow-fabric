@@ -27,6 +27,7 @@ for new models.
 | [`model/precision_compare.py`](model/precision_compare.py) | Rounding error of INT8, INT4, FP4 and MXFP4 on weight-like data |
 | [`model/workloads/`](model/workloads/) | Exact layer tables of 11 reference CNNs, with the extraction script |
 | [`figures/`](figures/) | Figures produced by the models |
+| [`golden/`](golden/) | Bit-exact INT8 golden model of the tiny-skeleton CNNs, test-vector generator and self-tests: the reference for the RTL |
 | [`RUNBOOK.md`](RUNBOOK.md) | Every run and test, dated, with exact commands and results; setup and regression check |
 | [`tools/`](tools/) | `check_all.sh` regression check; one-off proposal PDF patch script |
 | [`notes/`](notes/) | Dated design notes and results; start with [core message and claims](notes/2026-11-01_core-message-and-claims.md) |

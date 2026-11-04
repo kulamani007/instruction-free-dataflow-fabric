@@ -4,7 +4,8 @@
 # Exit status 0 = everything matches; otherwise the failing checks are listed.
 set -u
 cd "$(dirname "$0")/.."
-PY=${PYTHON:-python}
+if [ -x .venv/bin/python ]; then DEFAULT_PY=.venv/bin/python; else DEFAULT_PY=python3; fi
+PY=${PYTHON:-$DEFAULT_PY}
 fail=0
 
 check() {   # check <script> <extended-regex> ...
@@ -27,6 +28,11 @@ check fit_map.py             "ResNet-50 .*CIRCUIT +1107 fps +28%"  "MobileNetV1 
 check tiny_skeleton.py       "total 1280 KB, holding 80 KB -> 6% used"  "^ +16 +320 +16%" \
                              "8 KB/engine: +27 engines, +216 KB"
 check precision_compare.py   "INT8  per-tensor +39\.8 +35\.3 +26\.1"  "MXFP4 block-32 .* 18\.8 +17\.9 +18\.4"
+
+for g in make_vectors.py test_golden.py; do
+    if out=$($PY "golden/$g" 2>&1); then echo "ok    golden/$g: $(echo "$out" | tail -1)"
+    else echo "FAIL  golden/$g"; echo "$out" | tail -5; fail=1; fi
+done
 
 for plot in plot_composability.py plot_fit_map.py; do
     if $PY "model/$plot" >/dev/null 2>&1; then echo "ok    $plot ran"

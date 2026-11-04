@@ -1,2 +1,12 @@
 __pycache__/
 .venv/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/main.pdf
+paper/arxiv/
+paper/arxiv-upload.tar.gz
+.DS_Store
+golden/vectors/

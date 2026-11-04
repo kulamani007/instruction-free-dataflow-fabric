@@ -273,3 +273,48 @@ From the notes, in rough priority. Move each one into the run log when it is don
   title, creator, CC BY 4.0, v0.1, 2026-11-02.
 - **R4 DOI added** to the README (badge + citation) and `CITATION.cff` (`doi:` field).
   Future releases (`v0.2`, …) get new version DOIs under the same concept DOI automatically.
+- **R5 LaTeX toolchain.**
+  ```bash
+  brew install tectonic
+  ```
+  Tectonic 0.17.0 (downloads LaTeX packages on first compile).
+- **R6 Number check before compiling the paper.** Every figure in the draft compared with the
+  run outputs. Two overstatements fixed: the precision gap (INT8 vs best 4-bit is 17–20 dB on
+  Gaussian/Laplacian data but only ~7 dB with rare outliers; also corrected in
+  `notes/2026-11-01_precision-plan.md`), and the parameter range of the CNNs studied
+  (0.02–25 M, plus VGG-16 at 138 M).
+- **R7 Paper build.**
+  ```bash
+  bash paper/build.sh
+  ```
+  → `paper/main.pdf` (5 pages, IEEE conference format, no unresolved citations; one
+  overfull equation fixed by splitting it over two lines) and `paper/arxiv-upload.tar.gz`
+  (main.tex, refs.bib, main.bbl, figures/). The tarball was unpacked in a fresh folder and
+  compiled standalone with `tectonic -X compile main.tex`: OK. Build outputs are git-ignored.
+
+### 2026-11-04 · Mac · golden model for the hardware (step H0)
+
+- **R1 Golden model.** `golden/golden_model.py`: bit-exact INT8 inference of the three
+  tiny-skeleton CNNs under arithmetic contract v1 (int8 symmetric, int32 accumulate,
+  per-channel requantisation `(acc*M + 2^(S-1)) >> S`, ReLU clamp, zero padding k//2).
+  Network shapes imported from `model/tiny_skeleton.py` (which now also keeps each layer's
+  shape; its own output is unchanged).
+- **R2 Vectors.**
+  ```bash
+  python golden/make_vectors.py --update-manifest
+  ```
+  First version calibrated each layer on one input: the logits saturated 15–30 % of the time,
+  which would hide requantisation bugs. Changed to 16 calibration inputs: logits no longer
+  saturate; ReLU layers ~40–64 % zeros, ≤ 0.1 % at 127. 187 files, manifest
+  `golden/vectors.sha256`. Accumulator: ≤ 18 bits seen, 25 bits worst case (VisionNet c5).
+- **R3 Self-tests.**
+  ```bash
+  python golden/test_golden.py
+  ```
+  5/5 pass: nested-loop reference; exact integer requantisation (20,007 cases); first conv of
+  each model via banked window fetch (`window_bank_model.py`) equals golden; hex read-back
+  (166 files); MAC counts equal `tiny_skeleton.py`.
+- **R4 Mutation check of the tests** (in a scratch copy): truncation instead of rounding →
+  caught by test 2; padding shifted one row → caught by test 1. (A first padding mutation
+  was a no-op by mistake and passed; redone.)
+- **R5** `tools/check_all.sh` now also runs both golden scripts.
